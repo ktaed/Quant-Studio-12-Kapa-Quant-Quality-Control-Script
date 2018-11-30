@@ -14,7 +14,7 @@ def Concentration_uguL(concentration_pM,frag):
 #Header for output file
 OutFile.write('Sample\tConcentration(pM)\tConcentration(ug/uL)\n')
 
-#The lists for this loop are undefine, needs to be joined with Dan's code to work
+#The lists for this loop are undefined, needs to be joined with Dan's code to work
 PMs = []
 uguL = []
 for index in range(len(Samples)):
