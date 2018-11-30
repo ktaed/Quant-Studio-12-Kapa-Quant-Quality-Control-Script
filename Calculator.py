@@ -11,15 +11,10 @@ def Concentration_uguL(concentration_pM,frag):
     result = ((concentration_pM)*(10**-15)*frag*617.9*10**6)
     return result
 
-#Examples to verify math
-#pm = Concentration_pM(100000,30,11,-3.3,248)
-#print(pm)
-#print(Concentration_uguL(pm,248))
-
+#Header for output file
 OutFile.write('Sample\tConcentration(pM)\tConcentration(ug/uL)\n')
-#OutFile.write(%s'\t'%d'\t'%d) % (Samples,PM,uguL)
-#OutFile.write('test')
 
+#The lists for this loop are undefine, needs to be joined with Dan's code to work
 PMs = []
 uguL = []
 for index in range(len(Samples)):
