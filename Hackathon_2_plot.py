@@ -15,12 +15,6 @@ X = np.asarray(logConcentration[0:5]).reshape(-1,1) #x values (remain constant/u
 Y = avgCq[0:5] #y values (will change)
 standardRegression = LinearRegression()
 
-''''plt.scatter(X, Y)
-plt.title("log vs means")
-plt.xlabel("log concentration")
-plt.ylabel("Ct mean")
-plt.show()'''
-
 standardRegression.fit(X, Y)
 #standardRegression.fit((X, Y), (X, Y), sample_weight=None)
 slope = standardRegression.coef_
@@ -28,5 +22,12 @@ yInt = standardRegression.intercept_
 print(slope) #output is currently -3.4291
 print(yInt) #output is currently 13.033630000000002
 
-#regressionLineY = [yInt, ]
-#regressionLineX = [0, ]
+regressionLineY = [yInt, slope+yInt, slope*2+yInt, slope*3+yInt, slope*-1+yInt, slope*-2+yInt, slope*-3+yInt]
+regressionLineX = [0, 1, 2, 3, -1, -2, -3]
+
+plt.scatter(X, Y)
+plt.plot(regressionLineX, regressionLineY) #regression line WIP
+plt.title("log vs means")
+plt.xlabel("log concentration")
+plt.ylabel("Ct mean")
+plt.show()
