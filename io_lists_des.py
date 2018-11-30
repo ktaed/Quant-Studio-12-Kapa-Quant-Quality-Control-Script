@@ -30,5 +30,10 @@ def read_input(file_name):
     Samples = sorted(set(Samples), key=lambda x: Samples.index(x))
     ct_mean = sorted(set(ct_mean), key=lambda x: ct_mean.index(x))
     ct_sd = sorted(set(ct_sd), key=lambda x: ct_sd.index(x))
+    standard_means = ct_mean[-7:-1]
+    target = ct_mean[0:-8]
+    target.append(ct_mean[24])
+    return Samples, ct_mean, ct_sd, standard_means, target
+    
 
-    return Samples, ct_mean, ct_sd
+Samples, ct_mean, ct_sd, standard_means, target = read_input("MH 3-8_QuantStudio_export.txt")
