@@ -24,9 +24,9 @@ plt.show()'''
 standardRegression.fit(X, Y)
 #standardRegression.fit((X, Y), (X, Y), sample_weight=None)
 slope = standardRegression.coef_
-yIntercept = standardRegression.intercept_
+yInt = standardRegression.intercept_
 print(slope) #output is currently -3.4291
-print(yIntercept) #output is currently 13.033630000000002
+print(yInt) #output is currently 13.033630000000002
 
-#regressionLineY = [standardRegression.intercept_, ]
+#regressionLineY = [yInt, ]
 #regressionLineX = [0, ]
