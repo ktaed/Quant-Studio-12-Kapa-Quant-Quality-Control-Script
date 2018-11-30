@@ -24,3 +24,4 @@ plt.show()'''
 standardRegression.fit(X, Y)
 #standardRegression.fit((X, Y), (X, Y), sample_weight=None)
 print(standardRegression.coef_) #output is currently 1.6971
+print(standardRegression.intercept_) #output is currently 16.96357
