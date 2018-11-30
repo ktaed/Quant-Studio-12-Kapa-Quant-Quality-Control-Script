@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+#This should probably be made a function eventually that takes arguments for slope, Yint, frag length, and dilution factor
+
 OutFile = open('output.txt', 'w')
 
 def Concentration_pM(d_factor,ct,Yint,slope,frag):
