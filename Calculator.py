@@ -1,12 +1,6 @@
-
-# coding: utf-8
-
-# In[79]:
-
-
 #!/usr/bin/env python
 
-OutFile = open('output', 'w')
+OutFile = open('output.txt', 'w')
 
 def Concentration_pM(d_factor,ct,Yint,slope,frag):
    result = (d_factor*(10**((float(ct)-Yint)/float(slope)))*(452/float(frag)))
@@ -20,9 +14,17 @@ def Concentration_uguL(concentration_pM,frag):
 #print(pm)
 #print(Concentration_uguL(pm,248))
 
-OutFile.write('Sample\tConcentration(pM)\tConcentration(ug/uL)')
-OutFile.write(%s'\t'%d'\t'%d) % (Samples,PM,uguL)
+OutFile.write('Sample\tConcentration(pM)\tConcentration(ug/uL)\n')
+#OutFile.write(%s'\t'%d'\t'%d) % (Samples,PM,uguL)
 #OutFile.write('test')
 
-OutFile.close()
+PMs = []
+uguL = []
+for index in range(len(Samples)):
+    PMs.append(Concentration_pM(100000,ct_mean[index],11,-3.3,248))
+for value in PMs:
+    uguL.append(Concentration_uguL(value,248))
+for index in range(len(Samples)):
+   OutFile.write('%s\t%d\t%d\n' % (Samples[index],PMs[index],uguL[index])) 
 
+OutFile.close()
