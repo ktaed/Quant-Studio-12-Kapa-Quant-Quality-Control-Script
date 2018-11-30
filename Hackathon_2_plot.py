@@ -27,7 +27,7 @@ regressionLineX = [0, 1, 2, 3, -1, -2, -3]
 
 plt.scatter(X, Y)
 plt.plot(regressionLineX, regressionLineY) #regression line WIP
-plt.text(-3, 10, "y = %sx+%s" %(slope, yInt)) #prints line equation
+plt.text(-3, 8, "y = %sx+%s" %(slope, yInt)) #prints line equation
 plt.title("log vs means")
 plt.xlabel("log concentration")
 plt.ylabel("Ct mean")
