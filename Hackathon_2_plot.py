@@ -5,7 +5,7 @@ import sklearn
 import matplotlib.pyplot as plt
 
 logConcentration = [1.30, 0.30, -0.70, -1.70, -2.70, -3.70] 
-avgCq = [20.671, 18.032, 12.742, 12.463, 14.97, 13.12] 
+avgCq = [8.718, 11.779, 15.414, 19.012, 22.247, 25.459] #read from file
 
 from sklearn.linear_model import LinearRegression
 #X = logConcentration
@@ -23,5 +23,10 @@ plt.show()'''
 
 standardRegression.fit(X, Y)
 #standardRegression.fit((X, Y), (X, Y), sample_weight=None)
-print(standardRegression.coef_) #output is currently 1.6971
-print(standardRegression.intercept_) #output is currently 16.96357
+slope = standardRegression.coef_
+yIntercept = standardRegression.intercept_
+print(slope) #output is currently -3.4291
+print(yIntercept) #output is currently 13.033630000000002
+
+#regressionLineY = [standardRegression.intercept_, ]
+#regressionLineX = [0, ]
