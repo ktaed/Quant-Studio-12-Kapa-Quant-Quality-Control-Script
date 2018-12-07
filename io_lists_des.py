@@ -33,7 +33,7 @@ def read_input(file_name):
     standard_means = ct_mean[-7:-1]
     target = ct_mean[0:-8]
     target.append(ct_mean[24])
-    return Samples, ct_mean, ct_sd, standard_means, target
+    return Samples[:-7], ct_mean, ct_sd, standard_means, target
     
-
-Samples, ct_mean, ct_sd, standard_means, target = read_input("MH 3-8_QuantStudio_export.txt")
+if __name__ == "__main__":
+    Samples, ct_mean, ct_sd, standard_means, target = read_input("MH 3-8_QuantStudio_export.txt")

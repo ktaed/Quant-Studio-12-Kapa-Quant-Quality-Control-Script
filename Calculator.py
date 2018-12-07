@@ -2,27 +2,20 @@
 
 #This should probably be made a function eventually that takes arguments for slope, Yint, frag length, and dilution factor
 
+def output_write(output_file_name, samples, ct_mean, mu_frag, dil_factor, m,b,r2 ):
+    def Concentration_pM(d_factor, ct, Yint, slope, frag):
+        return (d_factor * (10 ** ((float(ct) - Yint) / float(slope))) * (452 / float(frag)))
+        # return result
 
+    def Concentration_uguL(concentration_pM, frag):
+        return ((concentration_pM) * (10 ** -15) * frag * 617.9 * 10 ** 6)
 
-def Concentration_pM(d_factor,ct,Yint,slope,frag):
-   result = (d_factor*(10**((float(ct)-Yint)/float(slope)))*(452/float(frag)))
-   return result
-def Concentration_uguL(concentration_pM,frag):
-    result = ((concentration_pM)*(10**-15)*frag*617.9*10**6)
-    return result
-def output_write(output_file_name):
-   OutFile = open(output_file_name, 'w')
+    OutFile = open(output_file_name, 'w')
    #Header for output file
-   OutFile.write('Sample\tConcentration(pM)\tConcentration(ug/uL)\n')
+    OutFile.write('Sample Name\tConcentration of undiluted library(pM)\tConcentration of undiluted library (nM)\tConcentration of undiluted library(ug/uL)\n')
+    for i, samp in enumerate(samples):
+        temp = Concentration_pM(dil_factor,ct_mean[i], b,m,mu_frag)
+        OutFile.write("{}\t{}\t{}\t{}\n".format(samp,temp,temp/1000,Concentration_uguL(temp,mu_frag) ))
 
-   #The lists for this loop are undefined, needs to be joined with Dan's code to work
-   PMs = []
-   uguL = []
-   for index in range(len(Samples)):
-       PMs.append(Concentration_pM(100000,ct_mean[index],11,-3.3,248))
-   for value in PMs:
-       uguL.append(Concentration_uguL(value,248))
-   for index in range(len(Samples)):
-      OutFile.write('%s\t%d\t%d\n' % (Samples[index],PMs[index],uguL[index])) 
-
-   OutFile.close()
+    OutFile.write("\nR^2={}\nSlope={}\nYint={}\n".format(r2,m,b))
+    OutFile.close()
